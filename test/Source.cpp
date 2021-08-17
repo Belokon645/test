@@ -26,13 +26,26 @@ int main()
 
 		while (c != cols)
 		{
-			if (r == 0 || r == pad - 1 || c == 0 || c == cols - 1)
+			//check all places where * must be
+			if (r == 0 || r == rows - 1 || c == 0 || c == cols - 1)
 			{
 				std::cout << "*";
 				++c;
 			}
-			else {
-
+			else 
+			{
+				//if it must be not *, check place for output message
+				if (r == pad + 1 && c == pad + 1)
+				{
+					std::cout << greeting;
+					c += greeting.size();
+				}
+				// if symbol not * or message, it must be only " "
+				else
+				{
+					std::cout << " ";
+					++c;
+				}
 			}
 		}
 		std::cout << std::endl;
